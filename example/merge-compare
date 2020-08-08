@@ -1,0 +1,29 @@
+#!/bin/php
+<?php
+
+use EasyBenchmark\EasyBenchmark;
+
+require __DIR__. "/../vendor/autoload.php";
+
+$values = [];
+
+$arrays = [];
+for ($i = 1; $i <=100; $i++) {
+    $arrays[] = range(0, 1000);
+}
+
+$test = [
+    "sequence merge" => function () use($arrays) {
+        $arr = [];
+        foreach ($arrays as $array) {
+            $arr = array_merge($arr, $array);
+        }
+    },
+    "merge unpacked array" => function () use($arrays) {
+        array_merge(...$arrays);
+    }
+];
+
+foreach (EasyBenchmark::run($test, 100) as $result) {
+    var_dump((string)$result);
+}

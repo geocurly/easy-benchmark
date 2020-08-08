@@ -1,0 +1,29 @@
+#!/bin/php
+<?php
+
+use EasyBenchmark\EasyBenchmark;
+use EasyBenchmark\Result;
+
+require __DIR__. "/../vendor/autoload.php";
+
+$storage = new class {
+    private array $storage = [];
+    public function push($value): void
+    {
+        $this->storage[] = $value;
+    }
+};
+
+$testFunctions = [
+    "testMemoryUsage" => static function (Result $result) use($storage) {
+        $storage->push(random_bytes(random_int(100000, 200000)));
+        $result->setMemory(memory_get_usage());
+    }
+];
+
+/*
+ * There is we set third input argument as "false" to get every iteration result
+ */
+foreach (EasyBenchmark::run($testFunctions, 10, false) as $result) {
+    var_dump("Iteration: {$result->getIter()}. Memory: {$result->humanReadableMemory()}");
+}

@@ -1,0 +1,18 @@
+{
+    "name": "geocurly/easy-benchmark",
+    "description": "Simple benchmark wrapper for your php code",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "EasyBenchmark\\": "src"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.1",
+        "phpunit/phpunit": "^9.2"
+    }
+}
