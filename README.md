@@ -44,7 +44,7 @@ foreach (EasyBenchmark::run($test, 100) as $result) {
  */
 ```
 
-2) Check finction memory usage
+2) Check function memory usage
 ```php
 <?php
 
