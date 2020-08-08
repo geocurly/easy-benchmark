@@ -17,7 +17,7 @@ use EasyBenchmark\EasyBenchmark;
 require __DIR__. "/../vendor/autoload.php";
 
 $arrays = [];
-for ($i = 1; $i <=100; $i++) {
+for ($i = 1; $i <= 100; $i++) {
     $arrays[] = range(0, 1000);
 }
 
